@@ -56,7 +56,7 @@ public class ButtonListener {
         copyButton.addActionListener(e -> {
             copyToClipboard(password);
             copyButton.setText("Скопировано!");
-            Timer timer = new Timer(2000, event -> copyButton.setText("Скопировать"));
+            Timer timer = new Timer(3000, event -> copyButton.setText("Скопировать"));
             timer.setRepeats(false);
             timer.start();
         });
