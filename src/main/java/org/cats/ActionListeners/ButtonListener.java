@@ -53,10 +53,7 @@ public class ButtonListener {
         panel.add(label, BorderLayout.CENTER);
 
         JButton copyButton = new JButton("Скопировать");
-        copyButton.addActionListener(e -> {
-            copyToClipboard(password);
-            JOptionPane.showMessageDialog(frame, "Скопировано!", "Успех", JOptionPane.INFORMATION_MESSAGE);
-        });
+        copyButton.addActionListener(e -> copyToClipboard(password));
         Object[] options = {copyButton, "OK"};
         JOptionPane.showOptionDialog(frame, panel, "Пароль сгенерирован!",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[1]);
