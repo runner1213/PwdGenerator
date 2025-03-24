@@ -5,6 +5,10 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
 import static org.cats.Main.*;
 
 public class ButtonListener {
@@ -30,7 +34,9 @@ public class ButtonListener {
             }
             else {
                 button.setText("Генерация пароля...");
-                JOptionPane.showMessageDialog(frame, "Ваш пароль: " + generatedpwd(letters, numbers), "Пароль сгенерирован!", JOptionPane.INFORMATION_MESSAGE);
+                // JOptionPane.showMessageDialog(frame, "Ваш пароль: " + generatedpwd(letters, numbers), "Пароль сгенерирован!", JOptionPane.INFORMATION_MESSAGE);
+                String password = generatedpwd(letters, numbers);
+                showCustomDialog(password);
                 button.setText("Подтвердить");
             }
         });
@@ -39,5 +45,26 @@ public class ButtonListener {
     private static String generatedpwd(boolean letters, boolean numbers) {
         int length = Integer.parseInt(symbolsfield.getText());
         return RandomStringUtils.random(length, letters, numbers);
+    }
+
+    private static void showCustomDialog(String password) {
+        JPanel panel = new JPanel(new BorderLayout());
+        JLabel label = new JLabel("Ваш пароль: " + password);
+        panel.add(label, BorderLayout.CENTER);
+
+        JButton copyButton = new JButton("Скопировать");
+        copyButton.addActionListener(e -> {
+            copyToClipboard(password);
+            JOptionPane.showMessageDialog(frame, "Скопировано!", "Успех", JOptionPane.INFORMATION_MESSAGE);
+        });
+        Object[] options = {copyButton, "OK"};
+        JOptionPane.showOptionDialog(frame, panel, "Пароль сгенерирован!",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[1]);
+    }
+
+    private static void copyToClipboard(String text) {
+        StringSelection selection = new StringSelection(text);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, null);
     }
 }
