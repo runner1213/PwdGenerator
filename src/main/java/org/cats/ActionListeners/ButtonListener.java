@@ -26,8 +26,8 @@ public class ButtonListener {
             if (!letters && !numbers) {
                 JOptionPane.showMessageDialog(frame, "Выберите хотя-бы один из чекбоксов", "Выберите хотя-бы один вариант!", JOptionPane.WARNING_MESSAGE);
             }
-            else if (symbolsfieldText > 100) {
-                JOptionPane.showMessageDialog(frame, "Введите количество символов меньше 100", "Неверное количество символов!", JOptionPane.WARNING_MESSAGE);
+            else if (symbolsfieldText > 200) {
+                JOptionPane.showMessageDialog(frame, "Введите количество символов < 200", "Неверное количество символов!", JOptionPane.WARNING_MESSAGE);
             }
             else if (symbolsfieldText <= 0) {
                 JOptionPane.showMessageDialog(frame, "Введите количество символов больше нуля", "Неверное количество символов!", JOptionPane.WARNING_MESSAGE);

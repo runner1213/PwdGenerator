@@ -14,7 +14,9 @@ public class Main {
     public static JCheckBox useLetters = new JCheckBox("Использовать буквы?");
     public static JCheckBox useNumbers = new JCheckBox("Использовать числа?");
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
         Elements.init();
         frame.setFocusable(true);
         frame.requestFocusInWindow();

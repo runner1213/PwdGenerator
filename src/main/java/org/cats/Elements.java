@@ -7,24 +7,11 @@ import static org.cats.Main.*;
 
 public class Elements {
     public static void init() {
-        try {
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-            UIManager.put("Panel.background", new Color(30, 30, 30));
-            UIManager.put("OptionPane.background", new Color(30, 30, 30));
-            UIManager.put("OptionPane.messageForeground", Color.LIGHT_GRAY);
-            UIManager.put("Button.background", new Color(60, 60, 60));
-            UIManager.put("Button.foreground", Color.WHITE);
-            UIManager.put("CheckBox.background", new Color(30, 30, 30));
-            UIManager.put("CheckBox.foreground", Color.WHITE);
-            UIManager.put("Label.foreground", Color.WHITE);
-            UIManager.put("TextField.background", new Color(50, 50, 50));
-            UIManager.put("TextField.foreground", Color.WHITE);
-            UIManager.put("TextField.caretForeground", Color.WHITE);
-        } catch (Exception ignored) {}
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
 
         symbolsfield.setBounds(360, 200, 200, 25);
         symbolsfield.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -50,10 +37,8 @@ public class Elements {
         frame.add(symbolsfield);
         frame.add(button);
         frame.add(symbolslabel);
-        frame.add(symbolsfield);
         frame.add(useNumbers);
         frame.add(useLetters);
-        frame.add(useNumbers);
 
         SwingUtilities.updateComponentTreeUI(frame); // Применение UI хуйни из начала кода
     }
